@@ -1,0 +1,57 @@
+/**
+ * 证件照小程序 — 设计令牌 v2
+ * 风格：简洁专业、卡片化、品牌蓝
+ */
+page {
+  /* 品牌色 */
+  --color-primary: #3E85EE;
+  --color-primary-light: #EBF3FE;
+  --color-primary-dark: #2B6ACC;
+  --color-primary-gradient: linear-gradient(135deg, #5B9BF5 0%, #3E85EE 60%, #2B6ACC 100%);
+
+  /* 功能色 */
+  --color-success: #34C759;
+  --color-warning: #FF9500;
+  --color-danger: #FF3B30;
+  --color-accent: #FF6B35;
+
+  /* 中性色 */
+  --color-bg-page: #F7F8FA;
+  --color-bg-card: #FFFFFF;
+  --color-bg-muted: #F0F2F5;
+  --color-text: #1A1A2E;
+  --color-text-secondary: #8E8E93;
+  --color-text-placeholder: #AEAEB2;
+  --color-border: #E8ECF0;
+  --color-border-primary: #D4E4FC;
+
+  /* 圆角 */
+  --radius-xs: 6rpx;
+  --radius-sm: 12rpx;
+  --radius-md: 20rpx;
+  --radius-lg: 28rpx;
+  --radius-pill: 44rpx;
+  --radius-btn: 48rpx;
+  --radius-full: 999rpx;
+
+  /* 阴影 */
+  --shadow-xs: 0 2rpx 8rpx rgba(26, 26, 46, 0.04);
+  --shadow-card: 0 4rpx 24rpx rgba(62, 133, 238, 0.08);
+  --shadow-card-hover: 0 8rpx 32rpx rgba(62, 133, 238, 0.12);
+  --shadow-bar: 0 -4rpx 24rpx rgba(26, 26, 46, 0.06);
+  --shadow-fab: 0 4rpx 20rpx rgba(26, 26, 46, 0.12);
+
+  /* 间距 */
+  --spacing-page: 32rpx;
+  --spacing-section: 28rpx;
+  --spacing-card: 28rpx;
+
+  /* 字号 */
+  --font-xs: 22rpx;
+  --font-sm: 24rpx;
+  --font-base: 28rpx;
+  --font-md: 30rpx;
+  --font-lg: 34rpx;
+  --font-xl: 40rpx;
+  --font-xxl: 48rpx;
+}

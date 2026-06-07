@@ -7,7 +7,9 @@ Page({
    */
   data: {
     // 近期热门列表
-		photoSizeList: app.globalData.photoSizeList
+		photoSizeList: app.globalData.photoSizeList,
+    // 协同记账小程序 AppID，请替换为实际值
+    accountAppId: 'wxa7dd928b92fb2a62'
   },
 
   /**

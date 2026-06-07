@@ -15,7 +15,7 @@
   <!-- 自定义背景颜色选择器 -->
 	<view class="color-picker-view">
 		<view wx:if="{{ showColorPicker }}" class="color-picker-content">
-			<button bindtap="closeColorPicker" size="mini" type="primary" style="background-color: #3E85EE;">确定</button>
+			<button bindtap="closeColorPicker" class="picker-confirm-btn" size="mini">确定</button>
 			<view class="tips">
 				<text class="text-red">先选右侧色系</text>
 				<text>\n\n</text>
@@ -82,11 +82,11 @@
 		</view>
 	</view>
 	<view class="gesture">
-		<view class="change-clothes right" bindtap="changeClothes">
+		<view class="change-clothes right fab-btn" bindtap="changeClothes">
 			<image mode="widthFix" class="style" src="../images/acl8s-bu9e0-016_s.png"></image>
 			<text class="style-text">换装</text>
 		</view>
-		<view class="change-hair right" bindtap="changeHair">
+		<view class="change-hair right fab-btn" bindtap="changeHair">
 			<image mode="widthFix" class="style" src="../images/ahvga-47qgd-003_s.png"></image>
 			<text class="style-text">头发</text>
 		</view>
@@ -100,15 +100,15 @@
 			<text class="style-text">裁切</text>
 		</view> -->
 
-		<view wx-if="{{tabIndex === 1 && videoLoaded}}" bindtap="lookVideo" class="look-videw left" style="top: {{-(targetHeight * showScale)}}rpx;">
+		<view wx-if="{{tabIndex === 1 && videoLoaded}}" bindtap="lookVideo" class="look-videw left fab-btn" style="top: {{-(targetHeight * showScale)}}rpx;">
 			<image mode="widthFix" class="style" src="../images/look-video.png"></image>
 			<text class="style-text">看视频</text>
 		</view>
-		<view wx-if="{{tabIndex === 1}}" bindtap="vipKoutu" class="look-videw left" style="top: {{-(targetHeight * showScale) + 200}}rpx;">
+		<view wx-if="{{tabIndex === 1}}" bindtap="vipKoutu" class="look-videw left fab-btn" style="top: {{-(targetHeight * showScale) + 200}}rpx;">
 			<image mode="widthFix" class="style" src="../images/use.png"></image>
 			<text class="style-text text-red">剩{{vipCount}}次</text>
 		</view>
-		<view wx-if="{{tabIndex === 1 && ((targetHeight * showScale) > 350)}}" bindtap="showQrcode2" class="look-videw left" style="top: {{-150}}rpx;">
+		<view wx-if="{{tabIndex === 1 && ((targetHeight * showScale) > 350)}}" bindtap="showQrcode2" class="look-videw left fab-btn" style="top: {{-150}}rpx;">
 			<image mode="widthFix" class="style" src="../images/author.png"></image>
 			<text class="style-text">作者</text>
 		</view>
@@ -124,19 +124,18 @@
 			<view class="custom-bg" style="background-color: {{customBg}}"></view>
 		</view>
 	</view>
-	<view class="padding-xs" wx:if="{{count <= 0 && !filePath2}}">
-		<view>下载次数已用完。</view>
-		<view wx:if="{{tabIndex === 1}}">点击使用后即可下载</view>
+	<view class="count-tip" wx:if="{{count <= 0 && !filePath2}}">
+		<text>下载次数已用完</text>
+		<text wx:if="{{tabIndex === 1}}" class="count-tip__sub">点击使用后即可下载</text>
 	</view>
 	<view class="download-view">
-		<view class="no-count" wx:if="{{ count <= 0 && !filePath2 && tabIndex === 0}}">
-			<button wx:if="{{videoLoaded}}" bindtap="lookVideo" type="default">看视频后下载</button>
-			<navigator wx:else="" target="self" url="/pages/mein/mein" open-type="reLaunch">
-				<button type="default">领 取 次 数 (+1)</button>
+		<view class="btn-group" wx:if="{{ count <= 0 && !filePath2 && tabIndex === 0}}">
+			<button wx:if="{{videoLoaded}}" bindtap="lookVideo" class="btn-secondary">看视频下载</button>
+			<navigator wx:else="" target="self" url="/pages/mein/mein" open-type="reLaunch" style="flex:1;">
+				<button class="btn-secondary btn-block">领取次数</button>
 			</navigator>
 		</view>
-		<button wx:if="{{(!hideDownloadBtn) && (count > 0) && (tabIndex === 0)}}" bindtap="composeImage" type="default">下 载 图 片</button>
-		<button wx:if="{{(!hideDownloadBtn) && filePath2 && (tabIndex === 1)}}" bindtap="composeImage" type="default">下 载 图 片</button>
+		<button wx:if="{{(!hideDownloadBtn) && (count > 0) && (tabIndex === 0)}}" bindtap="composeImage" class="btn-primary btn-block">下载图片</button>
+		<button wx:if="{{(!hideDownloadBtn) && filePath2 && (tabIndex === 1)}}" bindtap="composeImage" class="btn-primary btn-block">下载图片</button>
 	</view>
-    <ad unit-id="adunit-eaee002e3b71ca92"></ad>
 </view>

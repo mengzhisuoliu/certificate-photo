@@ -1,36 +1,41 @@
-/* components/pageScrollMessage.wxss */
-.container {
+.notice-bar {
   width: 100%;
-  height: 40rpx;
-  background-color: #DBEDFC;
-
-  
-}
-.container .msg {
-    display: block;
-    width: max-content;
-    line-height: 40rpx;
-    font-size: 24rpx;
-    color: #ee8b8d;
-    position: relative;
-    animation: 20s identifier linear infinite normal;
-    -webkit-animation: 20s identifier linear infinite normal;
-    word-break: keep-all;
-    white-space: nowrap;
+  height: 56rpx;
+  background-color: #EBF3FE;
+  overflow: hidden;
+  position: relative;
 }
 
-@keyframes identifier {
+.notice-bar__inner {
+  display: inline-block;
+  height: 56rpx;
+  line-height: 56rpx;
+  white-space: nowrap;
+  word-break: keep-all;
+  padding-left: 100%;
+  animation: notice-scroll 20s linear infinite;
+  -webkit-animation: notice-scroll 20s linear infinite;
+}
+
+.notice-bar__text {
+  display: inline;
+  font-size: 24rpx;
+  color: #2B6ACC;
+  white-space: nowrap;
+}
+
+@keyframes notice-scroll {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-100%);
   }
 }
 
-@-webkit-keyframes identifier {
+@-webkit-keyframes notice-scroll {
   0% {
-    -webkit-transform: translateX(100%);
+    -webkit-transform: translateX(0);
   }
   100% {
     -webkit-transform: translateX(-100%);

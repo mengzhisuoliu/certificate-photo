@@ -1,41 +1,21 @@
+<view class="page-wrap page-content">
+  <view class="section-title">需要帮助？</view>
+  <view class="info-card text-center" style="margin-bottom: 32rpx;">
+    如果您在操作过程中遇到困难，可以选择以下方式获取帮助
+  </view>
 
+  <view class="btn-group margin-section">
+    <button open-type="share" class="btn-success">朋友帮制作</button>
+    <button open-type="contact" class="btn-secondary" bindtouchstart="sendGroupQRCode">联系客服</button>
+  </view>
 
-<view class="padding">
-  <!-- <ad unit-id="adunit-eaee002e3b71ca92"></ad> -->
-	<!-- <ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad> -->
-</view>
+  <view class="section-title">常见问题</view>
+  <view class="disclaimer-card">因微信版本、手机系统等原因，部分用户无法正常操作、无法成功下载图片。</view>
+  <view class="disclaimer-card">操作繁琐，不够简易，提示不明确等。</view>
+  <view class="disclaimer-card">虽然作者尽可能的解决以上问题，但作者一人之力，时间精力经费有限。</view>
+  <view class="disclaimer-card">为了您能成功生成想要的免冠照/证件照，您可以选择找朋友帮忙制作，或联系客服帮制作。</view>
 
-<view class="padding flex justify-around">
-	<button open-type="share" class="cu-btn lg radius bg-green" style="margin:0;width:auto;">朋友帮制作</button>
-	<button open-type="contact" class="cu-btn lg radius bg-blue" style="margin:0;width:auto;" bindtouchstart="sendGroupQRCode">联系客服</button>
-</view>
-
-
-<view class="padding-left padding-right margin-bottom text-content">
-	<view class="bg-white radius padding-xs text-xs text-gray">
-		因微信版本、手机系统等原因，部分用户无法正常操作、无法成功下载图片。
-	</view>
-</view>
-
-<view class="padding-left padding-right margin-bottom text-content">
-	<view class="bg-white radius padding-xs text-xs text-gray">
-		操作繁琐，不够简易，提示不明确等。
-	</view>
-</view>
-
-<view class="padding-left padding-right margin-bottom text-content">
-	<view class="bg-white radius padding-xs text-xs text-gray">
-		虽然作者尽可能的解决以上问题，但作者一人之力，时间精力经费有限。
-	</view>
-</view>
-
-<view class="padding-left padding-right text-content">
-	<view class="bg-white radius padding-xs text-xs text-gray">
-		为了您能成功生成想要的免冠照/证件照，您可以选择找朋友帮忙制作，或联系客服帮制作。
-	</view>
-</view>
-
-<view class="padding">
-  <!-- <ad unit-id="adunit-eaee002e3b71ca92"></ad> -->
-	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+  <view class="margin-top">
+    <ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+  </view>
 </view>

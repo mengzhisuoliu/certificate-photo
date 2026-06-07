@@ -1,32 +1,27 @@
-<scroll-view scroll-y class="scroll-view">
-    <ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
-    <button class="share-btn bg-gradual-purple padding radius text-center shadow-blur" open-type="share" type="default" style="width: 80vw;">点击邀请</button>
+<scroll-view scroll-y class="page-wrap page-content">
+  <button class="btn-primary btn-block share-btn" open-type="share" type="default">点击邀请好友</button>
 
-    <view class="padding text-center">
-        <text class="text-green">成功邀请一位朋友 +1 次免费下载免冠照</text>
+  <view class="text-center margin-section">
+    <text class="text-primary">成功邀请一位朋友 +1 次免费下载</text>
+  </view>
+
+  <view class="menu-card" style="margin: 0 0 24rpx;">
+    <view wx:for="{{invitedList}}" wx:key="item" class="invite-item">
+      <view class="invite-item__avatar" style="background-image:url({{successUserList[index].avatarUrl}});"></view>
+      <text class="invite-item__name">{{successUserList[index].nickName || '匿名好友'}}</text>
+      <button wx:if="{{!allShareData[item]}}" data-openid="{{item}}" bindtap="shareSuccessUpdateCount" class="invite-item__btn btn-primary">
+        +1 次<text wx:if="{{updateCountLoading}}">...</text>
+      </button>
+      <button wx:else data-openid="{{item}}" class="invite-item__btn btn-secondary" disabled>已领取</button>
     </view>
+  </view>
 
-    <view class="cu-list menu">
-        <view wx:for="{{invitedList}}" wx:key="item" class="cu-item">
-            <view class="content">
-                <view wx-if="{{successUserList[index].avatarUrl}}" class="cu-avatar round lg" style="background-image:url({{successUserList[index].avatarUrl}});"></view>
-                <text class="text-grey">{{successUserList[index].nickName || '匿名好友'}}</text>
-            </view>
-            <view class="action">
-                <button wx:if="{{!allShareData[item]}}" data-openid="{{item}}" bindtap="shareSuccessUpdateCount" class="jia3ci-btn cu-btn round bg-green shadow">
-                    <text>+1 次</text>
-                    <text wx:if="{{updateCountLoading}}">...</text>
-                </button>
-                <button wx:else data-openid="{{item}}" class="jia3ci-btn cu-btn round bg-gray shadow">已领取</button>
-            </view>
-        </view>
+  <view class="text-center text-secondary margin-section">
+    <text wx:if="{{!invitedList[0]}}">还没有成功邀请好友。</text>
+    <text>被邀请者签到即算邀请成功。</text>
+  </view>
 
-    </view>
+  <button wx:if="{{ !subscribed }}" bindtap="subscribeMessage" class="btn-success btn-block">邀请成功通知我</button>
 
-    <view class="padding text-center">
-        <text wx:if="{{!invitedList[0]}}">还没有成功邀请好友。</text>
-        <text>被邀请者签到即算邀请成功。</text>
-    </view>
-
-    <button wx:if="{{ !subscribed }}" bindtap="subscribeMessage" class="bg-gradual-green">邀请成功通知我</button>
+  <ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
 </scroll-view>

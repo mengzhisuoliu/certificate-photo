@@ -1,14 +1,13 @@
-<view class="container">
+<view class="tool-page">
+  <view class="section-title">压缩完成</view>
 
-<view class="backView">
-  <image src="{{imageSrc}}" mode="aspectFit" bind:tap="preView" />
-</view>
+  <view class="upload-box">
+    <image src="{{imageSrc}}" mode="aspectFit" bind:tap="preView" />
+  </view>
 
-<view style="margin-top: 20rpx;">
-  <text style="color: #999;font-size: 26rpx;">压缩后图片占用{{size}}kb</text>
-</view>
+  <view class="upload-meta">压缩后占用 {{size}} KB</view>
 
-<view style="width: 85%;margin-top: 100rpx;">
-<button bind:tap="downloadClick" class="downloadBtn" style="width: 100%;">下载</button>
-</view>
+  <view class="tool-page__action tool-page__action--lg">
+    <button bind:tap="downloadClick" class="btn-primary btn-block">保存到相册</button>
+  </view>
 </view>

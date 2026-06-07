@@ -1,8 +1,8 @@
 .c {
-  color: #5f27cd;
+  color: #3E85EE;
 }
 .bg {
-  background: #5f27cd;
+  background: #3E85EE;
 }
 .t50 {
   top: 50%;

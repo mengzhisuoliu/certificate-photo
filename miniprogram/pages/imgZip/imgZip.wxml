@@ -1,33 +1,36 @@
-<view class="container">
+<view class="tool-page">
+  <view class="section-title">图片压缩</view>
 
-<view class="backView">
-  <image bindtap="choosePic" src="{{imageSrc?imageSrc:'./image/choosePic.png'}}" mode="{{imageSrc?'aspectFit':'center'}}" />
-</view>
-<text wx:if="{{!imageSrc}}" style="position: relative;top: -280rpx;color: #999;font-size: 30rpx;">上传图片</text>
-
-<view wx:if="{{imageSrc}}">
-  <text style="color: #999;font-size: 24rpx;">压缩前图片宽{{realW}}px，高{{realH}}px，占用空间{{size}}kb</text>
-</view>
-
-<view class="setZipView" style="margin-top: 40rpx;">
-  <view style="text-align: left;display: flex;align-items: center;">
-    <label style="height: 100%;margin-right: 5rpx;">等比压缩：宽</label>
-    <input type="number" bindinput='imgWidth' value="{{imgW}}"/>
-    <label style="margin-left: 5rpx;">px</label>
-    <view style="width: 30rpx;"></view>
-    <label style="height: 100%;margin-right: 5rpx;">高</label>
-    <input type="number" bindinput='imgHeight' value="{{imgH}}"/>
-    <label style="margin-left: 5rpx;">px</label>
+  <view class="upload-box" bindtap="choosePic">
+    <image wx:if="{{imageSrc}}" src="{{imageSrc}}" mode="aspectFit" />
+    <view wx:else class="upload-placeholder">
+      <image class="upload-placeholder__icon" src="./image/choosePic.png" mode="aspectFit" />
+      <text class="upload-placeholder__hint">点击上传图片</text>
+    </view>
   </view>
-</view>
-<view class="setZipView">
-  <view style="text-align: left;display: flex;align-items: center;">
-    <label style="height: 100%;">压缩质量：</label>
-    <input type="number" bindinput="imgQuality" placeholder="请输入50-100整数" value="{{quality}}" style="width: 370rpx;" />
-  </view>
-</view>
 
-<view class="setZipView">
-  <button bind:tap="zipClick" class="zipBtn">压缩</button>
-</view>
+  <view wx:if="{{imageSrc}}" class="upload-meta">
+    原图 {{realW}}×{{realH}} px，{{size}} KB
+  </view>
+
+  <view class="tool-form">
+    <view class="form-row">
+      <text class="form-row__label">宽度</text>
+      <input class="form-row__input" type="number" bindinput="imgWidth" value="{{imgW}}" />
+      <text class="form-row__unit">px</text>
+    </view>
+    <view class="form-row">
+      <text class="form-row__label">高度</text>
+      <input class="form-row__input" type="number" bindinput="imgHeight" value="{{imgH}}" />
+      <text class="form-row__unit">px</text>
+    </view>
+    <view class="form-row">
+      <text class="form-row__label">压缩质量</text>
+      <input class="form-row__input form-row__input--wide" type="number" bindinput="imgQuality" placeholder="50-100" value="{{quality}}" />
+    </view>
+  </view>
+
+  <view class="tool-page__action">
+    <button bind:tap="zipClick" class="btn-primary btn-block">开始压缩</button>
+  </view>
 </view>

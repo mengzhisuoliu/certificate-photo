@@ -1,130 +1,91 @@
-<view class="container">
-  <view wx:if="{{!tipsActiveClass}}" class="{{['tips',tipsActiveClass]}}">点击“<text class="sml_dot"></text>
-      <text class="lag_dot"></text>
-      <text class="sml_dot"></text>”添加到我的小程序<text bindtap="handleClickCollect" class="ok">我知道了</text>
-      <view class="top_arrow"></view>
+<view class="page-wrap">
+  <view wx:if="{{!tipsActiveClass}}" class="collect-tip {{tipsActiveClass}}">
+    点击"
+    <text class="collect-tip__dot collect-tip__dot--sm"></text>
+    <text class="collect-tip__dot collect-tip__dot--lg"></text>
+    <text class="collect-tip__dot collect-tip__dot--sm"></text>
+    "添加到我的小程序
+    <text bindtap="handleClickCollect" class="collect-tip__ok">我知道了</text>
+    <view class="collect-tip__arrow"></view>
   </view>
-  <page-scroll-message style="width: 100%;"></page-scroll-message>
-  <!-- <ad unit-id="adunit-eaee002e3b71ca92"></ad> -->
-  <!-- 轮播图 -->
-	<swiper autoplay circular>
+
+  <page-scroll-message></page-scroll-message>
+
+  <swiper autoplay circular class="banner-swiper">
     <swiper-item>
-      <navigator
-        hover-class="none"
-        target="miniProgram" 
-        open-type="navigate" 
-        app-id="wx59207a0f58974db4"
-        version="release"
-        class="swiper-item">
-        <view class="img-p">
-          <image mode="widthFix" src="./images/微信图片_20200712103220.jpg"></image>
-          <view class="msg text-orange light">
-            <text class="cu-btn radius bg-orange">一键P图</text>
-            <view></view>
-            <text class="sub-title">背景图片随意换</text>
-          </view>
+      <navigator hover-class="none" target="miniProgram" open-type="navigate" app-id="wx59207a0f58974db4" version="release" class="banner-item">
+        <image class="banner-item__img" mode="aspectFill" src="./images/微信图片_20200712103220.jpg"></image>
+        <view class="banner-item__overlay">
+          <view class="banner-item__tag banner-item__tag--orange">一键P图</view>
+          <text class="banner-item__desc">背景图片随意换</text>
         </view>
       </navigator>
     </swiper-item>
     <swiper-item>
-      <navigator
-        hover-class="none"
-        target="miniProgram" 
-        open-type="navigate" 
-        app-id="wx44e3fff0e65528ad"
-        version="release"
-        class="swiper-item">
-        <view class="img-p">
-          <image mode="widthFix" src="./images/3001677327372_.pic.jpg"></image>
-          <view class="msg text-blue light">
-            <view class="cu-btn radius bg-blue text-white">下载</view>
-            <view></view>
-            <view class="sub-title text-white">好看的风景、美女、手机壁纸、电脑壁纸</view>
-          </view>
+      <navigator hover-class="none" target="miniProgram" open-type="navigate" app-id="{{accountAppId}}" version="release" class="banner-item">
+        <image class="banner-item__img" mode="aspectFill" src="./images/account-banner.jpg"></image>
+        <view class="banner-item__overlay">
+          <view class="banner-item__tag banner-item__tag--green">协同记账</view>
+          <text class="banner-item__desc">多人共享账本，收支一目了然</text>
         </view>
       </navigator>
     </swiper-item>
-	</swiper>
+  </swiper>
 
-    <!-- 搜索框 -->
-    <view class="search-view" bindtap="navigateTo" data-url="/pages/searchSize/searchView/searchView">
-        搜索：如“一寸”
+  <view class="page-content">
+    <view class="search-bar search-bar--tap" bindtap="navigateTo" data-url="/pages/searchSize/searchView/searchView">
+      搜索证件照尺寸，如"一寸"
     </view>
-
-    <!-- 功能区第一行 -->
-    <view class="tip-list">
-        <view data-index="{{0}}" bindtap="goClassPage" class="tip-item">
-            <image src="./images/home_icon0.png"></image>
-            <text>常用尺寸</text>
-        </view>
-        <view data-index="{{1}}" bindtap="goClassPage" class="tip-item">
-            <image src="./images/home_icon1.png"></image>
-            <text>职业资格</text>
-        </view>
-        <view data-index="{{2}}" bindtap="goClassPage" class="tip-item">
-            <image src="./images/home_icon2.png"></image>
-            <text>公务员</text>
-        </view>
-        <view data-index="{{3}}" bindtap="goClassPage" class="tip-item">
-            <image src="./images/home_icon3.png"></image>
-            <text>学历语言</text>
-        </view>
-        <!-- <view bindtap="navigateTo" data-url="/pages/searchSize/searchSize" class="tip-item">
-			<image src="./images/icon-more.png"></image>
-			<text>更多</text>
-		</view> -->
-    </view>
-    <!-- 功能区第二行 -->
-    <view class="tip-list">
-      <view bindtap="navigateTo" data-url="/pages/imgZip/imgZip" class="tip-item">
-          <image src="./images/home_icon4.png"></image>
-          <text>图片压缩</text>
-      </view>
-      <view bindtap="navigateTo" data-url="/pages/searchSize/custom/custom" class="tip-item">
-          <image src="./images/home_icon5.png"></image>
-          <text>自定尺寸</text>
-      </view>
-      <!--  -->
-      <view bindtap="navigateTo" data-url="/pages/imgCompose/compose" class="tip-item">
-          <image src="./images/home_icon6.png"></image>
-          <text>打印排版</text>
-      </view>
-      <view data-index="{{0}}" bindtap="goClassPage" class="tip-item">
-          <image src="./images/home_icon7.png"></image>
-          <text>更多</text>
-      </view>
-      <!-- <view bindtap="navigateTo" data-url="/pages/searchSize/searchSize" class="tip-item">
-    <image src="./images/icon-more.png"></image>
-    <text>更多</text>
-  </view> -->
   </view>
-	
-  <!-- 近期热门 -->
-	<view class="hot-view">
-		<image src="./images/hot.png"></image>
-	</view>
 
-  <!-- 热门列表 -->
-	<view class="hot-list">
-    <view
-      wx:for="{{photoSizeList}}"
-      wx:key="name">
-      <ad
-        wx:if="{{ index % 17 === 2 }}"
-        unit-id="adunit-eaee002e3b71ca92">
-      </ad>
-      <view
-        data-index="{{index}}"
-        bindtap="goNextPage"
-        class="hot-list-item">
-        <view class="title">{{ item.name }}</view>
-        <view class="description">{{ item.px }}  |  {{ item.size }}</view>
-        <image src="/images/take.png"></image>
+  <view class="feature-grid margin-section">
+    <view data-index="{{0}}" bindtap="goClassPage" class="feature-grid__item">
+      <view class="feature-grid__icon"><image src="./images/home_icon0.png"></image></view>
+      <text class="feature-grid__label">常用尺寸</text>
+    </view>
+    <view data-index="{{1}}" bindtap="goClassPage" class="feature-grid__item">
+      <view class="feature-grid__icon"><image src="./images/home_icon1.png"></image></view>
+      <text class="feature-grid__label">职业资格</text>
+    </view>
+    <view data-index="{{2}}" bindtap="goClassPage" class="feature-grid__item">
+      <view class="feature-grid__icon"><image src="./images/home_icon2.png"></image></view>
+      <text class="feature-grid__label">公务员</text>
+    </view>
+    <view data-index="{{3}}" bindtap="goClassPage" class="feature-grid__item">
+      <view class="feature-grid__icon"><image src="./images/home_icon3.png"></image></view>
+      <text class="feature-grid__label">学历语言</text>
+    </view>
+  </view>
+
+  <view class="feature-grid margin-section">
+    <view bindtap="navigateTo" data-url="/pages/imgZip/imgZip" class="feature-grid__item">
+      <view class="feature-grid__icon"><image src="./images/home_icon4.png"></image></view>
+      <text class="feature-grid__label">图片压缩</text>
+    </view>
+    <view bindtap="navigateTo" data-url="/pages/searchSize/custom/custom" class="feature-grid__item">
+      <view class="feature-grid__icon"><image src="./images/home_icon5.png"></image></view>
+      <text class="feature-grid__label">自定尺寸</text>
+    </view>
+    <view bindtap="navigateTo" data-url="/pages/imgCompose/compose" class="feature-grid__item">
+      <view class="feature-grid__icon"><image src="./images/home_icon6.png"></image></view>
+      <text class="feature-grid__label">打印排版</text>
+    </view>
+    <view data-index="{{0}}" bindtap="goClassPage" class="feature-grid__item">
+      <view class="feature-grid__icon"><image src="./images/home_icon7.png"></image></view>
+      <text class="feature-grid__label">更多</text>
+    </view>
+  </view>
+
+  <view class="page-content">
+    <view class="section-title">近期热门</view>
+    <view wx:for="{{photoSizeList}}" wx:key="name">
+      <ad wx:if="{{ index % 17 === 2 }}" unit-id="adunit-eaee002e3b71ca92"></ad>
+      <view data-index="{{index}}" bindtap="goNextPage" class="photo-list-item">
+        <view class="photo-list-item__title">{{ item.name }}</view>
+        <view class="photo-list-item__desc">{{ item.px }}  |  {{ item.size }}</view>
+        <image class="photo-list-item__icon" src="/images/take.png"></image>
       </view>
     </view>
-	</view>
-
-	<view class="ad-view">
-		<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
-	</view>
+    <ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+  </view>
 </view>

@@ -17,8 +17,8 @@
     "pages/imgCompose/compose"
   ],
   "window": {
-    "backgroundColor": "#fff",
-    "backgroundTextStyle": "light",
+    "backgroundColor": "#F7F8FA",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#3E85EE",
     "navigationBarTitleText": "",
     "navigationBarTextStyle": "white"
@@ -26,8 +26,9 @@
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "tabBar": {
-    "backgroundColor": "#fff",
-    "color": "#333333",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "color": "#8E8E93",
     "selectedColor": "#3E85EE",
     "list": [
       {

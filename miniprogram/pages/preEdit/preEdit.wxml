@@ -1,32 +1,36 @@
-<page-scroll-message style="width: 100%;"></page-scroll-message>
-<scroll-view class="container" scroll-y>
+<view class="pre-edit-page">
+  <page-scroll-message></page-scroll-message>
 
-  <ad class="margin-bottom" unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+  <scroll-view class="pre-edit-scroll" scroll-y>
+    <view class="pre-edit-body">
+      <view class="section-title">{{photoName}}</view>
+      <view class="info-card">
+        <view class="info-card__row">
+          <text class="info-card__label">照片像素</text>
+          <text class="info-card__value">{{px}}</text>
+        </view>
+        <view class="info-card__row">
+          <text class="info-card__label">打印尺寸</text>
+          <text class="info-card__value">{{size}}</text>
+        </view>
+        <view class="info-card__row">
+          <text class="info-card__label">照片描述</text>
+          <text class="info-card__value">{{discription}}</text>
+        </view>
+      </view>
 
-<view class="header">{{photoName}}</view>
-<view class="tips">
-	<view>照片像素：{{px}}</view>
-	<view>打印尺寸：{{size}}</view>
-	<view>照片描述：{{discription}}</view>
+      <view class="section-title">拍照秘籍</view>
+      <view class="info-card">
+        <view>· 使用纯色背景（推荐白墙）</view>
+        <view>· 避免多人出现在照片中</view>
+        <view>· 露出耳朵、眉毛和下巴</view>
+      </view>
+
+      <ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+    </view>
+  </scroll-view>
+
+  <view class="bottom-bar pre-edit-bottom">
+    <button bindtap="chooseImage" class="btn-primary btn-block" hover-class="none">开始制作</button>
+  </view>
 </view>
-
-<view class="header">拍照秘籍</view>
-<view class="tips">
-	<view>- 照片使用纯色背景（推荐白墙）</view>
-	<view>- 避免多人出现在照片中</view>
-	<view>- 露出耳朵、眉毛和下巴</view>
-</view>
-
-
-<view class="flex justify-around btn-view">
-	<!-- <navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator> -->
-	<view bindtap="chooseImage" class="cu-btn round bg-blue lg shadow">开始制作</view>
-</view>
-
-</scroll-view>
-
-<view class="flex justify-around btn-view">
-	<!-- <navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator> -->
-	<view bindtap="chooseImage" class="cu-btn round bg-blue lg shadow">开始制作</view>
-</view>
-

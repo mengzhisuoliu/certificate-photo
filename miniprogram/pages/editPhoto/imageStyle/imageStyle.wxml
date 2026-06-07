@@ -1,32 +1,26 @@
-<view>
-	<ad unit-id="adunit-eaee002e3b71ca92"></ad>
-	<!-- <ad unit-id="adunit-e1381b03a0facc9c"></ad> -->
-	<scroll-view scroll-x class="nav">
-		<view class="flex text-center">
-			<view class="cu-item flex-sub {{index==TabCur?'text-blue cur':''}}" wx:for="{{['经典女', '经典男', '其他']}}" wx:key="*this" bindtap="tabSelect" data-id="{{index}}">
-				{{item}}
-			</view>
-		</view>
-	</scroll-view>
+<view class="asset-page">
+  <view class="page-content" style="padding-bottom: 0;">
+    <ad unit-id="adunit-eaee002e3b71ca92"></ad>
+  </view>
 
-	<view class="scroll-height">
-		<view wx-if="{{TabCur === 0}}" class="img-list">
-			<view bindtap="selectImg" data-url="{{item.src}}" wx:for="{{imgList.nv}}" wx:key="_id" class="img-view">
-				<image mode="aspectFit" src="{{ item.src }}/thumbnail"></image>
-				<text wx:if="{{videoLoaded}}" class="msg text-center text-blue">看视频后使用</text>
-			</view>
-		</view>
-		<view wx-if="{{TabCur === 1}}" class="img-list">
-			<view bindtap="selectImg" data-url="{{item.src}}" wx:for="{{imgList.nan}}" wx:key="_id" class="img-view">
-				<image mode="aspectFit" src="{{ item.src }}/thumbnail"></image>
-				<text wx:if="{{videoLoaded}}" class="msg text-center text-blue">看视频后使用</text>
-			</view>
-		</view>
-		<view wx-if="{{TabCur === 2}}" class="img-list">
-			<view bindtap="selectImg" data-url="{{item.src}}" wx:for="{{imgList.other}}" wx:key="_id" class="img-view">
-				<image mode="aspectFit" src="{{ item.src }}/thumbnail"></image>
-				<text wx:if="{{videoLoaded}}" class="msg text-center text-blue">看视频后使用</text>
-			</view>
-		</view>
-	</view>
+  <view class="tab-bar">
+    <view class="tab-bar__item {{index==TabCur?'tab-bar__item--active':''}}" wx:for="{{['经典女', '经典男', '其他']}}" wx:key="*this" bindtap="tabSelect" data-id="{{index}}">
+      {{item}}
+    </view>
+  </view>
+
+  <view class="asset-grid">
+    <view wx-if="{{TabCur === 0}}" wx:for="{{imgList.nv}}" wx:key="_id" bindtap="selectImg" data-url="{{item.src}}" class="asset-item">
+      <image mode="aspectFit" src="{{ item.src }}/thumbnail"></image>
+      <text wx:if="{{videoLoaded}}" class="asset-item__badge">看视频后使用</text>
+    </view>
+    <view wx-if="{{TabCur === 1}}" wx:for="{{imgList.nan}}" wx:key="_id" bindtap="selectImg" data-url="{{item.src}}" class="asset-item">
+      <image mode="aspectFit" src="{{ item.src }}/thumbnail"></image>
+      <text wx:if="{{videoLoaded}}" class="asset-item__badge">看视频后使用</text>
+    </view>
+    <view wx-if="{{TabCur === 2}}" wx:for="{{imgList.other}}" wx:key="_id" bindtap="selectImg" data-url="{{item.src}}" class="asset-item">
+      <image mode="aspectFit" src="{{ item.src }}/thumbnail"></image>
+      <text wx:if="{{videoLoaded}}" class="asset-item__badge">看视频后使用</text>
+    </view>
+  </view>
 </view>

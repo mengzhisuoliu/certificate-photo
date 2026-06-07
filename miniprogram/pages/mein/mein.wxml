@@ -1,70 +1,74 @@
-<scroll-view scroll-y class="scrollPage">
-
-<view class="user-info UCenter-bg">
-  <view class="my-info padding">
-      <view bindtap="userInfoAuth" class="cu-avatar xl round">
-        <image wx-if="{{authorized}}" mode="widthFix" src="{{userInfo.avatarUrl}}"></image>
+<scroll-view scroll-y class="page-wrap">
+  <view class="profile-header">
+    <view class="profile-header__bg"></view>
+    <view class="profile-header__user">
+      <view bindtap="userInfoAuth" class="profile-header__avatar">
+        <image wx-if="{{authorized}}" mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
       </view>
-      <view wx:if="{{!canIUseGetUserProfile}}" class="text-cut text-xl text-green nickName" style="width:6em;">
-          <button wx-if="{{!authorized}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" size="mini">授权登录</button>
+      <view class="profile-header__info">
+        <view wx:if="{{!canIUseGetUserProfile}}" class="profile-header__name">
+          <button wx-if="{{!authorized}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="profile-header__action" size="mini">授权登录</button>
           <text wx-if="{{authorized}}">{{userInfo.nickName}}</text>
+        </view>
+        <view wx:if="{{canIUseGetUserProfile}}" class="profile-header__name">
+          <button wx-if="{{!authorized}}" bindtap="getUserProfile" class="profile-header__action" size="mini">授权登录</button>
+          <text wx-if="{{authorized}}" bindtap="getUserProfile">{{userInfo.nickName}}</text>
+        </view>
       </view>
-      <view wx:if="{{canIUseGetUserProfile}}" class="text-cut text-xl text-green nickName" style="width:6em;">
-          <button wx-if="{{!authorized}}" bindtap="getUserProfile" size="mini">授权登录</button>
-          <text wx-if="{{authorized}}" bindtap="getUserProfile" style="color: white;">{{userInfo.nickName}}</text>
+      <view wx-if="{{signed}}" class="profile-header__sign">今日已签到</view>
+      <view wx-if="{{!signed && !signInLoading && userInfo.openid}}" class="profile-header__sign profile-header__sign--active" bindtap="signIn">签到 +1</view>
+      <view wx-if="{{signInLoading && !signed}}" class="profile-header__sign">签到中...</view>
+    </view>
+  </view>
+
+  <view class="stats-card">
+    <view class="stats-card__item">
+      <view class="stats-card__value">{{userInfo.count || 0}}<text class="stats-card__unit">次</text></view>
+      <view class="stats-card__label">剩余下载</view>
+    </view>
+    <view class="stats-card__item">
+      <view class="stats-card__value stats-card__value--green">{{userInfo.accumCreatePhoto || 0}}<text class="stats-card__unit">张</text></view>
+      <view class="stats-card__label">累计制作</view>
+    </view>
+  </view>
+
+  <view class="page-content" style="padding-top: 24rpx;">
+    <ad unit-id="adunit-eaee002e3b71ca92"></ad>
+  </view>
+
+  <view class="openid-card" wx:if="{{userInfo.openid}}">ID：{{ userInfo.openid }}</view>
+
+  <view class="menu-card">
+    <navigator url="/pages/share/share" class="menu-item">
+      <view class="menu-item__icon menu-item__icon--red">
+        <text class="cuIcon-friendadd text-red"></text>
       </view>
-      <view wx-if="{{signed}}" class="signIn">今日已签到</view>
-      <view wx-if="{{!signed && !signInLoading && userInfo.openid}}" class="signIn text-yellow text-xl" bindtap="signIn">签到+1次下载＞</view>
-      <view wx-if="{{signInLoading && !signed}}" class="signIn">签到中...</view>
-  </view>
-  <image src="./images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
-</view>
-
-<view class="padding flex text-center text-grey bg-white shadow-warp">
-  <view class="flex flex-sub flex-direction solid-right">
-    <view class="text-xxl text-orange">{{userInfo.count || 0}}<text class="text-df">次</text></view>
-    <view class="margin-top-sm">剩余下载次数</view>
-  </view>
-  <!-- <view class="flex flex-sub flex-direction solid-right">
-    <view class="text-xxl text-blue">{{userInfo.vipCount || 0}}<text class="text-df">次</text></view>
-    <view class="margin-top-sm">剩余精细抠图</view>
-  </view> -->
-  <view class="flex flex-sub flex-direction">
-    <view class="text-xxl text-green">{{userInfo.accumCreatePhoto || 0}}<text class="text-df">张</text></view>
-    <view class="margin-top-sm">累计下载</view>
-  </view>
-</view>
-<ad unit-id="adunit-eaee002e3b71ca92"></ad>
-
-<view style="text-align: center;margin-top: 30rpx;">我的唯一标识：{{ userInfo.openid }}</view>
-<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-  <view class="cu-item arrow">
-    <navigator class="content" url="/pages/share/share">
-      <text class="cuIcon-friendadd text-red"></text>
-      <text>邀请好友 + 次数</text>
+      <text class="menu-item__text">邀请好友 + 次数</text>
     </navigator>
-  </view>
-  <view wx:if="{{videoLoaded}}" class="cu-item arrow">
-    <view class="content" bindtap="lookVideo">
-      <text class="cuIcon-video text-red"></text>
-      <text>看视频 + 次数</text>
+    <view wx:if="{{videoLoaded}}" class="menu-item" bindtap="lookVideo">
+      <view class="menu-item__icon menu-item__icon--orange">
+        <text class="cuIcon-video text-orange"></text>
+      </view>
+      <text class="menu-item__text">看视频 + 次数</text>
+    </view>
+    <view class="menu-item" bindtap="previewQRcode">
+      <view class="menu-item__icon menu-item__icon--blue">
+        <text class="cuIcon-people text-primary"></text>
+      </view>
+      <text class="menu-item__text">有问题找作者</text>
+    </view>
+    <view class="menu-item">
+      <button open-type="contact" bindtouchstart="sendGroupQRCode">
+        <view class="menu-item__icon menu-item__icon--green">
+          <text class="cuIcon-messagefill text-green"></text>
+        </view>
+        <text class="menu-item__text menu-item__text--muted">联系客服</text>
+      </button>
     </view>
   </view>
-  <view class="cu-item arrow">
-    <view class="content" bindtap="previewQRcode">
-      <text class="cuIcon-people text-blue"></text>
-      <text>有问题找作者</text>
-    </view>
-  </view>
-  <view class="cu-item arrow">
-    <button class="cu-btn content" open-type="contact" bindtouchstart="sendGroupQRCode">
-      <text class="cuIcon-messagefill text-green"></text>
-      <text class="text-grey">联系客服</text>
-    </button>
-  </view>
-</view>
 
-<view class="github margin-top-lg text-center">
-  <text>项目已开源：</text><text bindtap="copyGithubLink" class="text-blue">点击复制开源地址</text>
-</view>
+  <view class="footer-link">
+    <text>项目已开源：</text>
+    <text bindtap="copyGithubLink" class="footer-link__action">点击复制地址</text>
+  </view>
 </scroll-view>

@@ -1,8 +1,6 @@
 // miniprogram/pages/editPhoto/imageStyle/imageStyle.js
 // 在页面中定义激励视频广告
 let videoAd = null
-// 在页面中定义插屏广告
-let interstitialAd = null
 let imgUrl = ''
 const allHair = {}
 Page({
@@ -102,16 +100,6 @@ Page({
 				}
 			})
 		}
-
-		// 在页面onLoad回调事件中创建插屏广告实例
-		if (wx.createInterstitialAd) {
-			interstitialAd = wx.createInterstitialAd({
-				adUnitId: 'adunit-71fe77c8c4d0e3ca'
-			})
-			interstitialAd.onLoad(() => {})
-			interstitialAd.onError((err) => {})
-			interstitialAd.onClose(() => {})
-		}
 	},
 
 	/**
@@ -124,14 +112,7 @@ Page({
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () {
-		// 在适合的场景显示插屏广告
-		if (interstitialAd) {
-			interstitialAd.show().catch((err) => {
-				console.error(err)
-			})
-		}
-  },
+	onShow: function () {},
   
   // 触底加载
   onReachBottom() {

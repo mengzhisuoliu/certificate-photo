@@ -1,4 +1,52 @@
-.msg {
-	font-size: 40rpx;
-	text-align: center;
+ad {
+  margin-bottom: 24rpx;
+}
+
+.complete-hero {
+  text-align: center;
+  padding: 40rpx 0 24rpx;
+}
+
+.complete-hero__icon {
+  width: 96rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  margin: 0 auto 20rpx;
+  background: linear-gradient(135deg, #4CD964 0%, #34C759 100%);
+  color: #fff;
+  font-size: 48rpx;
+  font-weight: 700;
+  border-radius: 50%;
+  box-shadow: 0 8rpx 24rpx rgba(52, 199, 89, 0.35);
+}
+
+.complete-hero__title {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8rpx;
+}
+
+.complete-hero__msg {
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+}
+
+.complete-preview {
+  display: flex;
+  justify-content: center;
+  margin: 24rpx 0 32rpx;
+}
+
+.complete-preview__img {
+  width: 240rpx;
+  height: 320rpx;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 4rpx solid var(--color-bg-card);
+  background: var(--color-bg-muted);
+}
+
+.action-group {
+  margin-top: 8rpx;
 }

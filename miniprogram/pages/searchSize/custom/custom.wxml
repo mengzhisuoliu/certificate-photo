@@ -1,19 +1,22 @@
-<view class="container">
-	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
-	<form>
-		<view class="cu-form-group">
-			<view class="title">宽度（像素 px）</view>
-			<input bindinput="widthChange" type="number" value="{{width}}" placeholder="请输入像素宽度 px"></input>
-		</view>
-		<view class="cu-form-group">
-			<view class="title">高度（像素 px）</view>
-			<input bindinput="heightChange" type="number" value="{{height}}" placeholder="请输入像素高度 px"></input>
-		</view>
+<view class="page-wrap page-content">
+  <view class="section-title">自定义尺寸</view>
+  <view class="info-card text-secondary" style="margin-bottom: 32rpx;">
+    输入您需要的证件照像素尺寸，系统将按此规格生成
+  </view>
 
-		<view>
-			<button class="btn-confirm" type="default" bindtap="selectPhoto">确定</button>
-		</view>
-	</form>
-	<!-- <navigator url="/pages/helpMake/helpMake" hover-class="none" class="text-orange lg margin-top">看不懂？不知道尺寸？帮制作</navigator> -->
+  <view class="form-card">
+    <view class="form-card__group">
+      <text class="form-card__label">宽度（px）</text>
+      <input class="form-card__input" bindinput="widthChange" type="number" value="{{width}}" placeholder="像素宽度"></input>
+    </view>
+    <view class="form-card__group">
+      <text class="form-card__label">高度（px）</text>
+      <input class="form-card__input" bindinput="heightChange" type="number" value="{{height}}" placeholder="像素高度"></input>
+    </view>
+    <view class="form-card__footer">
+      <button class="btn-primary btn-block" type="default" bindtap="selectPhoto">确定并选图</button>
+    </view>
+  </view>
+
+  <ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
 </view>
-
